@@ -44,7 +44,7 @@ pub fn build(b: *std.Build) !void {
         test_step.dependOn(check_autodocs);
     }
     if (!skip_install_langref) {
-        b.getInstallStep().dependOn(&install_langref.step);
+        // b.getInstallStep().dependOn(&install_langref.step);
     }
 
     const autodoc_test = b.addObject(.{
