@@ -136,6 +136,21 @@ pub const Instruction = struct {
     offset: usize,
     /// The raw (unparsed) operands for this instruction.
     operands: []const Word,
+
+    pub fn format(self: Instruction, writer: *std.Io.Writer) std.Io.Writer.Error!void {
+        try writer.print("#{d} @{d} {t}", .{
+            self.index,
+            self.offset,
+            self.opcode,
+        });
+
+        for (self.operands, 0..) |operand, i| {
+            try writer.print("{s}{d}", .{
+                if (i == 0) " " else ", ",
+                operand,
+            });
+        }
+    }
 };
 
 /// This parser contains information (acceleration tables)

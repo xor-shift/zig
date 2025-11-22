@@ -5877,6 +5877,8 @@ fn airDbgVar(cg: *CodeGen, inst: Air.Inst.Index) !void {
 }
 
 fn airAssembly(cg: *CodeGen, inst: Air.Inst.Index) !?Id {
+    log.err("airAssembly", .{});
+
     const gpa = cg.module.gpa;
     const zcu = cg.module.zcu;
     const ty_pl = cg.air.instructions.items(.data)[@intFromEnum(inst)].ty_pl;

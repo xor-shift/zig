@@ -87,6 +87,8 @@ const ModuleInfo = struct {
             result_id_offsets.items.len = 0;
             try parser.parseInstructionResultIds(binary, inst, &result_id_offsets);
 
+            log.err("{f}", .{inst});
+
             switch (inst.opcode) {
                 .OpEntryPoint => {
                     const entry_point: ResultId = @enumFromInt(inst.operands[1]);
